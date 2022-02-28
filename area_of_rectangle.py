@@ -29,11 +29,14 @@ def area_of_rectangle(height, width = None):
     >>> area_of_rectangle (7, 2)
     14
     """
-    if width:
-        width = height
     height = int(height)
     width = int(width)
-    area = height * width
+
+    if width is None:
+        width = height
+        area = height * width
+    else:
+        area = height * width
     return area
 
 if __name__ == '__main__':
@@ -45,8 +48,10 @@ if __name__ == '__main__':
         sys.exit(message)
     height = sys.argv[1]
     width = height
-    if len(sys.argv) > 3:
-        width = sys.argv[1]
+    if len(sys.argv) > 2:
+        height = sys.argv[1]
+        width = sys.argv[2]
+        area = int(height) * int(width)
 
     area = area_of_rectangle(height, width)
 
